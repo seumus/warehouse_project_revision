@@ -60,7 +60,7 @@ WAREHOUSE = [
 #   end
 # end
 
-def item_at_bay(bay)  #finds item value given the key
+def item_at_bay(bay)  #finds item value given the key (task 1)
   for item in WAREHOUSE
       if item.key?(bay.to_sym)
       return item[bay.to_sym]
@@ -68,7 +68,7 @@ def item_at_bay(bay)  #finds item value given the key
   end
 end
 
-def find_index(bay)  #finds the index of a item given the key
+def find_index(bay)  #finds the index of a item given the key (sub method)
   for b in WAREHOUSE
     if b.key?(bay.to_sym)
       return WAREHOUSE.index(b)
@@ -76,7 +76,7 @@ def find_index(bay)  #finds the index of a item given the key
   end
 end
 
-def find_index_at_value(item)  #finds the index of an item given the value
+def find_index_at_value(item)  #finds the index of an item given the value (sub method)
   for hash in WAREHOUSE
     if hash.has_value?(item)
       return WAREHOUSE.index(hash)
@@ -92,7 +92,7 @@ end
 
 
 
-def bay_at_item(item)  #finds the key of an item given the value
+def bay_at_item(item)  #finds the key of an item given the value (task 2)
   for hash in WAREHOUSE
     if hash.has_value?(item)
       return hash.key(item).to_s
@@ -100,7 +100,7 @@ def bay_at_item(item)  #finds the key of an item given the value
   end
 end
 
-def items_in_bays(bays)  #makes an array of values
+def items_in_bays(bays)  #makes an array of values (task 3)
   array = []
   for bay in bays
     array = array << item_at_bay(bay.to_sym)
@@ -108,7 +108,7 @@ def items_in_bays(bays)  #makes an array of values
   return array
 end
 
-def bays_at_items(items)  #makes an array of keys
+def bays_at_items(items)  #makes an array of keys (task 4)
   array = []
   for item in items
     array = array << bay_at_item(item)
@@ -117,7 +117,7 @@ def bays_at_items(items)  #makes an array of keys
 end
 
 
-def distance_between_bays(bays) #finds the difference in index between the minmax
+def distance_between_bays(bays) #finds the difference in index between the minmax (task 5)
   array = []
   for bay in bays
     array << find_index(bay)
@@ -147,7 +147,7 @@ end
 # end
 
 
-def collection_order(items) #nicer collection method - the unnecessary loops and arrays.
+def collection_order(items) #nicer collection method - the unnecessary loops and arrays. (task 6)
 
  item_indexes = []
  collection_order = []
