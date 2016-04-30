@@ -60,7 +60,7 @@ WAREHOUSE = [
 #   end
 # end
 
-def item_at_bay(bay)
+def item_at_bay(bay)  #finds item value given the key
   for item in WAREHOUSE
       if item.key?(bay.to_sym)
       return item[bay.to_sym]
@@ -68,7 +68,7 @@ def item_at_bay(bay)
   end
 end
 
-def find_index(bay)
+def find_index(bay)  #finds the index of a item given the key
   for b in WAREHOUSE
     if b.key?(bay.to_sym)
       return WAREHOUSE.index(b)
@@ -76,7 +76,7 @@ def find_index(bay)
   end
 end
 
-def find_index_at_value(item)
+def find_index_at_value(item)  #finds the index of an item given the value
   for hash in WAREHOUSE
     if hash.has_value?(item)
       return WAREHOUSE.index(hash)
@@ -84,18 +84,15 @@ def find_index_at_value(item)
   end
 end
 
-# def find_key_at_index(index)
-#   for i in WAREHOUSE
-#     if i
-#     end
+# def find_key_at_index(index, array)
+#   for num in array
+#     return WAREHOUSE[index].keys
 #   end
 # end
 
-# def convert_index_to_key(index)
-#   for num in
-# end
 
-def bay_at_item(item)
+
+def bay_at_item(item)  #finds the key of an item given the value
   for hash in WAREHOUSE
     if hash.has_value?(item)
       return hash.key(item).to_s
@@ -103,7 +100,7 @@ def bay_at_item(item)
   end
 end
 
-def items_in_bays(bays)
+def items_in_bays(bays)  #makes an array of values
   array = []
   for bay in bays
     array = array << item_at_bay(bay.to_sym)
@@ -111,7 +108,7 @@ def items_in_bays(bays)
   return array
 end
 
-def bays_at_items(items)
+def bays_at_items(items)  #makes an array of keys
   array = []
   for item in items
     array = array << bay_at_item(item)
@@ -120,7 +117,7 @@ def bays_at_items(items)
 end
 
 
-def distance_between_bays(bays)
+def distance_between_bays(bays) #finds the difference in index between the minmax
   array = []
   for bay in bays
     array << find_index(bay)
@@ -129,22 +126,22 @@ def distance_between_bays(bays)
   return min_max[1] - min_max[0]
 end
 
-def collection_order(items)
+def collection_order(items)  #returns a sorted array of keys 
   array = []
+  array_2 = []
   final_array = []
   for item in items
     array << find_index_at_value(item)
   end
   sorted_array = array.sort
-  end_array = []
   for num in sorted_array
     key = WAREHOUSE[num].keys
-    end_array << key
+    array_2 << key
   end
-  end_array = end_array.flatten
-  for keys in end_array
-    keysz = keys.to_s
-    final_array << keysz
+  array_2 = array_2.flatten
+  for keys in array_2
+    final_keys = keys.to_s
+    final_array << final_keys
   end
   return final_array
 end
