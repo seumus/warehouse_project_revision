@@ -126,22 +126,42 @@ def distance_between_bays(bays) #finds the difference in index between the minma
   return min_max[1] - min_max[0]
 end
 
-def collection_order(items)  #returns a sorted array of keys 
-  array = []
-  array_2 = []
-  final_array = []
-  for item in items
-    array << find_index_at_value(item)
-  end
-  sorted_array = array.sort
-  for num in sorted_array
-    key = WAREHOUSE[num].keys
-    array_2 << key
-  end
-  array_2 = array_2.flatten
-  for keys in array_2
-    final_keys = keys.to_s
-    final_array << final_keys
-  end
-  return final_array
+# def collection_order(items)  #returns a sorted array of keys  #initial method
+#   array = []
+#   array_2 = []
+#   final_array = []
+#   for item in items
+#     array << find_index_at_value(item)
+#   end
+#   sorted_array = array.sort
+#   for num in sorted_array
+#     key = WAREHOUSE[num].keys
+#     array_2 << key
+#   end
+#   array_2 = array_2.flatten
+#   for keys in array_2
+#     final_keys = keys.to_s
+#     final_array << final_keys
+#   end
+#   return final_array
+# end
+
+
+def collection_order(items) #nicer collection method - the unnecessary loops and arrays.
+
+ item_indexes = []
+ collection_order = []
+
+ for item in items
+     item_indexes << find_index_at_value(item)
+ end
+
+ sorted_indexes = item_indexes.sort
+
+ for index in sorted_indexes
+   collection_order = collection_order << WAREHOUSE[index].keys[0].to_s
+ end
+
+return collection_order
+
 end
